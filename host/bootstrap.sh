@@ -16,5 +16,6 @@ if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "debian" ]; then
   sudo rm -rf nnn-musl-static-4.4.x86_64.tar.gz
 fi
 
+rm -rf "$HOME/.bashrc.d"
 git clone https://github.com/antonbashir/local-linux "$HOME/.bashrc.d"
 cp "$HOME/.bashrc.d/host/host.sh" "$HOME/.bashrc"

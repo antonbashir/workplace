@@ -13,9 +13,11 @@ rm -rf nnn-musl-static-4.4.x86_64.tar.gz
 
 service ssh restart
 
+rm -rf /home/developer/.bashrc.d
 git clone https://github.com/antonbashir/local-linux "/home/developer/.bashrc.d"
 cp "/home/developer/.bashrc.d/container/container.sh" "/home/developer/.bashrc"
 
+rm -rf "$HOME/.bashrc.d"
 git clone https://github.com/antonbashir/local-linux "$HOME/.bashrc.d"
 cp "$HOME/.bashrc.d/container/container.sh" "$HOME/.bashrc"
 
