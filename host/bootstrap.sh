@@ -12,7 +12,7 @@ else
   fi
 
   if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "debian" ]; then
-    apt install -y git wget rsync tar aptitude iproute2 iftop
+    apt install -y git wget rsync tar aptitude iproute2 iftop util-linux
     wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
     tar xf nnn-musl-static-4.4.x86_64.tar.gz
     mv nnn-musl-static /usr/bin/files
