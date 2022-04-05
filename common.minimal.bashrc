@@ -2,7 +2,6 @@
 
 alias ll='ls -alt --color=always'
 alias rm='rm -rf'
-alias apt='sudo aptitude'
 alias transfer='rsync -ah --info=progress2'
 alias pack='tar -cpf'
 alias unpack='tar -xpf'
