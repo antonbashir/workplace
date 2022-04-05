@@ -34,20 +34,33 @@ toDir() {
 }
 
 
-function prompt() {
+function prompt_label() {
         local time_color="\[\e[0;38;5;27m\]"
         local user_host_color="\[\e[0;38;5;39m\]"
         local sign_color="\[\e[0;38;5;57m\]"
         local directory_color="\[\e[0;38;5;50m\]"
         local white_color="\[\e[0m\]"
+        local git_color="\[\e[0;38;5;156m\]"
+        local architecture_color="\[\e[0;38;5;134m\]"
 
         local time_part="$time_color\T"
         local user_part="$user_host_color\u"
         local host_part="$user_host_color\H"
         local user_host_part="$user_part$sign_color@$host_part"
         local directory_part="$directory_color\w"
-        local command_part="$sign_color^_^$white_color"
+        local architecture_part="$architecture_color$(dpkg --print-architecture)"
+        local command_part="$sign_color($(echo -e '🦊'))$white_color"
 
-        PS1="$time_part $user_host_part $directory_part\n$command_part "
+        PS1="$time_part $user_host_part $architecture_part $directory_part$git_color\$GIT_BRANCH\n$command_part "
 }
-prompt
+
+function prompt_command() {
+        if [ -f "/usr/bin/git" ] && [ -d "$(pwd)/.git" ]; then
+                export GIT_BRANCH=" $(git branch --show-current)"
+        else
+                export GIT_BRANCH=""
+        fi
+}
+
+PROMPT_COMMAND=prompt_command
+prompt_label
