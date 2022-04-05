@@ -33,6 +33,14 @@ toFile() {
 toDir() {
          chmod 755 $1
 }
+
+prepare {
+        sudo wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
+        sudo tar xf nnn-musl-static-4.4.x86_64.tar.gz
+        sudo mv nnn-musl-static /usr/bin/files
+        sudo rm -rf nnn-musl-static-4.4.x86_64.tar.gz
+}
+
 function prompt_label() {
         local time_color="\[\e[0;38;5;27m\]"
         local user_host_color="\[\e[0;38;5;39m\]"
