@@ -9,6 +9,9 @@ aptitude install -y sudo nano htop iftop rsync tree git wget curl ssh
 
 service ssh restart
 
+git clone https://github.com/antonbashir/local-linux "/home/developer/.bashrc.d"
+cp "/home/developer/.bashrc.d/container/container.sh" "/home/developer/.bashrc"
+
 git clone https://github.com/antonbashir/local-linux "$HOME/.bashrc.d"
 cp "$HOME/.bashrc.d/container/container.sh" "$HOME/.bashrc"
 
