@@ -32,6 +32,7 @@ alias mount='mount | column -t'
 alias path='echo -e ${PATH//:/\\n}'
 alias tree='tree -Ca'
 alias download="wget -N"
+alias occupied='du -d 1 -h'
 
 systemUser() {
         useradd --system --no-create-home -s /sbin/nologin $1
