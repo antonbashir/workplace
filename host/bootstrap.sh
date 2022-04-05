@@ -23,7 +23,9 @@ else
         nodejs \
         micro \
         clang \
-        gcc
+        gcc \
+        gpg \
+        pass
 
     wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
     tar xf nnn-musl-static-4.4.x86_64.tar.gz
@@ -52,6 +54,8 @@ else
           micro \
           clang \
           gcc \
+          gpg \
+          pass
 
     wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
     tar xf nnn-musl-static-4.4.x86_64.tar.gz
