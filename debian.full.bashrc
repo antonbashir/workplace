@@ -35,6 +35,7 @@ alias root='sudo -i'
 alias download="wget -N"
 alias occupied='du -d 1 -h'
 alias files='files -d -e -H -r'
+alias traffic='sudo iftop'
 
 systemUser() {
         sudo useradd --system --no-create-home -s /sbin/nologin $1
@@ -49,7 +50,7 @@ certificate() {
 }
 
 prepare() {
-        sudo apt install -y wget rsync tar aptitude iproute2
+        sudo apt install -y wget rsync tar aptitude iproute2 iftop
 }
 
 vm() {
