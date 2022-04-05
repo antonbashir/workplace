@@ -1,6 +1,6 @@
 [ -z "$PS1" ] && return
 
-alias ll='ls -alt --color=always --time-style=long-iso'
+alias ll='ls -alt --color=always'
 alias rm='rm -rf'
 alias apt='sudo aptitude'
 alias transfer='rsync -ah --info=progress2'
