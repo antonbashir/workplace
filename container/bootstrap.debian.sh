@@ -4,8 +4,6 @@ useradd -m -s /bin/bash developer
 passwd developer
 
 apt update
-apt upgrade
-apt full-upgrade
 apt install -y aptitude
 aptitude install -y sudo nano htop iftop rsync tree git wget curl ssh
 
