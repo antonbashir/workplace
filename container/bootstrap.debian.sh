@@ -8,7 +8,7 @@ else
 
   apt update
   apt install -y aptitude
-  aptitude install -y sudo nano htop iftop rsync tree git wget curl ssh iproute2
+  aptitude install -y sudo nano htop iftop rsync tree git wget curl ssh iproute2 neofetch
   wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
   tar xf nnn-musl-static-4.4.x86_64.tar.gz
   mv nnn-musl-static /usr/bin/files

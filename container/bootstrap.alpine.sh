@@ -5,7 +5,7 @@ if [[ $(id -u) -ne 0 ]] ; then
 else
   adduser -h /home/developer -s /bin/ash developer
 
-  apk add sudo nano htop iftop rsync tree git wget curl openssh iproute2 util-linux
+  apk add sudo nano htop iftop rsync tree git wget curl openssh iproute2 util-linux neofetch
   wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
   tar xf nnn-musl-static-4.4.x86_64.tar.gz
   mv nnn-musl-static /usr/bin/files
