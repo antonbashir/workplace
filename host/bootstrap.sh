@@ -52,12 +52,14 @@ else
           micro \
           clang \
           gcc \
-          tarantool
 
     wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
     tar xf nnn-musl-static-4.4.x86_64.tar.gz
     mv nnn-musl-static /usr/bin/files
     rm -rf nnn-musl-static-4.4.x86_64.tar.gz
+
+    curl -L https://tarantool.io/KKkJBXq/release/2.8/installer.sh | bash
+    aptitude install -y tarantool
   fi
 
   rm -rf "$HOME/.profile.d"
