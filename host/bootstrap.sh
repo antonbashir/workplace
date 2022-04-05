@@ -19,7 +19,7 @@ else
     rm -rf nnn-musl-static-4.4.x86_64.tar.gz
   fi
 
-  rm -rf "$HOME/.bashrc.d"
-  git clone https://github.com/antonbashir/local-linux "$HOME/.bashrc.d"
-  cp "$HOME/.bashrc.d/host/host.sh" "$HOME/.bashrc"
+  rm -rf "$HOME/.profile.d"
+  git clone https://github.com/antonbashir/local-linux "$HOME/.profile.d"
+  cp "$HOME/.profile.d/host/host.sh" "$HOME/.profile"
 fi

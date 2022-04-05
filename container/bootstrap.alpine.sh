@@ -13,17 +13,17 @@ else
 
   service sshd restart
 
-  rm -rf /home/developer/.bashrc.d
-  git clone https://github.com/antonbashir/local-linux "/home/developer/.bashrc.d"
-  cp "/home/developer/.bashrc.d/container/container.sh" "/home/developer/.bashrc"
+  rm -rf /home/developer/.profile.d
+  git clone https://github.com/antonbashir/local-linux "/home/developer/.profile.d"
+  cp "/home/developer/.profile.d/container/container.sh" "/home/developer/.profile"
 
-  rm -rf "$HOME/.bashrc.d"
-  git clone https://github.com/antonbashir/local-linux "$HOME/.bashrc.d"
-  cp "$HOME/.bashrc.d/container/container.sh" "$HOME/.bashrc"
+  rm -rf "$HOME/.profile.d"
+  git clone https://github.com/antonbashir/local-linux "$HOME/.profile.d"
+  cp "$HOME/.profile.d/container/container.sh" "$HOME/.profile"
 
   echo "developer ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/username
   chown -R developer:developer /home/developer
 
-  chmod +x /root/.bashrc
-  chmod +x /home/developer/.bashrc
+  chmod +x /root/.profile
+  chmod +x /home/developer/.profile
 fi

@@ -31,6 +31,6 @@ certificate() {
         openssl req -x509 -newkey rsa:4096 -keyout $1.key -out $1.cert -sha256 -days 365 -nodes -subj '/CN=$2'
 }
 
-. "$HOME/.bashrc.d/common/aliases.sh"
-. "$HOME/.bashrc.d/common/functions.sh"
-. "$HOME/.bashrc.d/common/prompt.sh"
+. "$HOME/.profile.d/common/aliases.sh"
+. "$HOME/.profile.d/common/functions.sh"
+. "$HOME/.profile.d/common/prompt.sh"
