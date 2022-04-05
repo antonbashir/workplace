@@ -4,7 +4,25 @@ if [[ $(id -u) -ne 0 ]] ; then
   echo "Use sudo to run this script"
 else
   if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "alpine" ]; then
-    apk add wget rsync tar aptitude iproute2 iftop git bsdmainutils
+      apk add \
+        sudo \
+        nano \
+        htop \
+        iftop \
+        rsync \
+        tree \
+        git \
+        wget \
+        curl \
+        openssh \
+        iproute2 \
+        util-linux \
+        neofetch \
+        openjdk11 \
+        python \
+        nodejs \
+        micro
+
     wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
     tar xf nnn-musl-static-4.4.x86_64.tar.gz
     mv nnn-musl-static /usr/bin/files
@@ -12,7 +30,25 @@ else
   fi
 
   if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "debian" ]; then
-    apt install -y git wget rsync tar aptitude iproute2 iftop util-linux
+    aptitude install -y sudo \
+          sudo \
+          nano \
+          htop \
+          iftop \
+          rsync \
+          tree \
+          git \
+          wget \
+          curl \
+          openssh \
+          iproute2 \
+          bsdmainutils \
+          neofetch \
+          openjdk-11-jdk \
+          python \
+          nodejs \
+          micro
+
     wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
     tar xf nnn-musl-static-4.4.x86_64.tar.gz
     mv nnn-musl-static /usr/bin/files
