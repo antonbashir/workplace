@@ -4,6 +4,7 @@ if [[ $(id -u) -ne 0 ]] ; then
   echo "Use sudo to run this script"
 else
   adduser -h /home/developer -s /bin/ash developer
+  passwd developer
 
   apk add nano htop iftop rsync tree git wget curl openssh iproute2
   wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
