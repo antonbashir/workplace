@@ -23,7 +23,7 @@ else
             bsdmainutils \
             neofetch \
             openjdk-11-jdk \
-            python \
+            python3 \
             nodejs \
             micro
 

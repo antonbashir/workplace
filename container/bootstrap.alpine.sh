@@ -20,7 +20,7 @@ else
         util-linux \
         neofetch \
         openjdk11 \
-        python \
+        python3 \
         nodejs \
         micro
 

@@ -19,7 +19,7 @@ else
         util-linux \
         neofetch \
         openjdk11 \
-        python \
+        python3 \
         nodejs \
         micro
 
@@ -45,7 +45,7 @@ else
           bsdmainutils \
           neofetch \
           openjdk-11-jdk \
-          python \
+          python3 \
           nodejs \
           micro
 
