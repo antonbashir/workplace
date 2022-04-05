@@ -188,7 +188,7 @@ function prompt() {
         local host_part="$user_host_color\H"
         local user_host_part="$user_part$sign_color@$host_part"
         local directory_part="$directory_color\w"
-        local command_part="$sign_color\$$white_color"
+        local command_part="$sign_color^_^$white_color"
 
         PS1="$time_part $user_host_part $directory_part\n$command_part "
 }
