@@ -11,7 +11,7 @@ else
   mv nnn-musl-static /usr/bin/files
   rm -rf nnn-musl-static-4.4.x86_64.tar.gz
 
-  service ssh restart
+  service sshd restart
 
   rm -rf /home/developer/.bashrc.d
   git clone https://github.com/antonbashir/local-linux "/home/developer/.bashrc.d"
