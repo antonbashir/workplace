@@ -34,6 +34,7 @@ alias tree='tree -Ca'
 alias root='sudo -i'
 alias download="wget -N"
 alias occupied='du -d 1 -h'
+alias files='files -d -e -H -r'
 
 systemUser() {
         sudo useradd --system --no-create-home -s /sbin/nologin $1
