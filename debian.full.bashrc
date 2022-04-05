@@ -33,6 +33,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias tree='tree -Ca'
 alias root='sudo -i'
 alias download="wget -N"
+alias occupied='du -d 1 -h'
 
 systemUser() {
         sudo useradd --system --no-create-home -s /sbin/nologin $1
