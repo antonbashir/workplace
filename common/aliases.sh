@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias ll='ls -alt --color=always --time-style=long-iso'
+alias ll='ls -alt --color=always'
 alias rm='rm -rf'
 alias transfer='rsync -ah --info=progress2'
 alias pack='tar -cpf'
