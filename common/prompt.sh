@@ -15,8 +15,9 @@ function prompt_label() {
         local directory_part="$directory_color\w"
         local architecture_part="$architecture_color$(dpkg --print-architecture)"
         local command_part="$sign_color($(echo -e '🦊'))$white_color"
-    else
+
         PS1="$time_part $user_host_part $architecture_part $directory_part$git_color\$GIT_BRANCH\n$command_part "
+    else
 
         local time_color="\[\e[0;38;5;27m\]"
         local user_host_color="\[\e[0;38;5;39m\]"
