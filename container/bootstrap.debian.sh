@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $(id -u) -ne 0 ]] ; then
+  echo "Use sudo to run this script"
+  exit 1;
+fi
+
 useradd -m -s /bin/bash developer
 passwd developer
 

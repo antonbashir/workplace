@@ -1,19 +1,24 @@
 #!/bin/bash
 
+if [[ $(id -u) -ne 0 ]] ; then
+  echo "Use sudo to run this script"
+  exit 1;
+fi
+
 if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "alpine" ]; then
-  sudo apk add wget rsync tar aptitude iproute2 iftop git
-  sudo wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
-  sudo tar xf nnn-musl-static-4.4.x86_64.tar.gz
-  sudo mv nnn-musl-static /usr/bin/files
-  sudo rm -rf nnn-musl-static-4.4.x86_64.tar.gz
+  apk add wget rsync tar aptitude iproute2 iftop git
+  wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
+  tar xf nnn-musl-static-4.4.x86_64.tar.gz
+  mv nnn-musl-static /usr/bin/files
+  rm -rf nnn-musl-static-4.4.x86_64.tar.gz
 fi
 
 if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "debian" ]; then
-  sudo apt install -y git wget rsync tar aptitude iproute2 iftop
-  sudo wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
-  sudo tar xf nnn-musl-static-4.4.x86_64.tar.gz
-  sudo mv nnn-musl-static /usr/bin/files
-  sudo rm -rf nnn-musl-static-4.4.x86_64.tar.gz
+  apt install -y git wget rsync tar aptitude iproute2 iftop
+  wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
+  tar xf nnn-musl-static-4.4.x86_64.tar.gz
+  mv nnn-musl-static /usr/bin/files
+  rm -rf nnn-musl-static-4.4.x86_64.tar.gz
 fi
 
 rm -rf "$HOME/.bashrc.d"
