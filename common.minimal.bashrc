@@ -34,7 +34,7 @@ toDir() {
         sudo chmod 755 $1
 }
 
-prepare {
+prepare() {
         sudo wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
         sudo tar xf nnn-musl-static-4.4.x86_64.tar.gz
         sudo mv nnn-musl-static /usr/bin/files
