@@ -26,8 +26,8 @@ alias ll='ls -alt --color=always --time-style=long-iso'
 alias rm='rm -rf'
 alias apt='aptitude'
 alias transfer='rsync -ah --info=progress2'
-alias pack='tar -cf'
-alias unpack='tar -xf'
+alias pack='tar -cpf'
+alias unpack='tar -xpf'
 alias mount='mount | column -t'
 alias path='echo -e ${PATH//:/\\n}'
 alias tree='tree -Ca'
@@ -57,15 +57,15 @@ vm() {
                 fi
 
                 if [ "$2" == "alpine" ]; then
-                         lxc-create -t download -n $3 -- --no-validate -d alpine -r edge -a amd64
+                        lxc-create -t download -n $3 -- --no-validate -d alpine -r edge -a amd64
                         return
                 fi
                 return
         fi
 
         if [ "$1" == "forward" ]; then
-                 iptables --table nat --append PREROUTING -p tcp -i eth0 -m tcp --dport $2 -j DNAT --to-destination $( lxc-info -n $3 -iH)
-                 iptables --table nat --append PREROUTING -p udp -i eth0 -m udp --dport $2 -j DNAT --to-destination $( lxc-info -n $3 -iH)
+                iptables --table nat --append PREROUTING -p tcp -i eth0 -m tcp --dport $2 -j DNAT --to-destination $(lxc-info -n $3 -iH)
+                iptables --table nat --append PREROUTING -p udp -i eth0 -m udp --dport $2 -j DNAT --to-destination $(lxc-info -n $3 -iH)
                 return
         fi
 
@@ -85,12 +85,30 @@ vm() {
         fi
 
         if [ "$1" == "rm" ]; then
-                  lxc-destroy -n $2
+                 lxc-destroy -n $2
                  return
         fi
 
+        if [ "$1" == "pack" ]; then
+                lxc-stop -n $2 -k > /dev/null 2>&1
+                current=$(pwd)
+                user=$USER
+                bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner -cpf $current/$3 ./* && chown -R $user:$user $current/$3"
+                lxc-start -n $2 > /dev/null 2>&1
+                return
+        fi
+
+
+        if [ "$1" == "unpack" ]; then
+                lxc-stop -n $2 -k > /dev/null 2>&1
+                bash -c "rm -rf /var/lib/lxc/$2/rootfs/*"
+                bash -c "tar --numeric-owner -xpf $3 -C /var/lib/lxc/$2/rootfs"
+                lxc-start -n $2 > /dev/null 2>&1
+                return
+        fi
+
         if [ "$1" == "configure" ]; then
-         apt install -y lxc lxcfs lxc-templates
+           apt install -y lxc lxcfs lxc-templates
 
         cat <<EOF > configure-dns
 dhcp-host=connect.local,192.168.128.2
@@ -121,15 +139,15 @@ LXC_DHCP_CONFILE="/etc/lxc/dnsmasq.conf"
 LXC_DOMAIN=""
 EOF
 
-         cp configure-dns /etc/lxc/dnsmasq.conf
-         cp configure-lxc-config /etc/lxc/default.conf
-         cp configure-lxc-default /etc/default/lxc
+        cp configure-dns /etc/lxc/dnsmasq.conf        
+        cp configure-lxc-config /etc/lxc/default.conf
+        cp configure-lxc-default /etc/default/lxc
 
-         rm configure-dns
-         rm configure-lxc-config
-         rm configure-lxc-default
+        rm configure-dns
+        rm configure-lxc-config
+        rm configure-lxc-default
 
-         service lxc-net restart
+        service lxc-net restart
         return
         fi
 
