@@ -39,5 +39,4 @@ certificate() {
 . "$HOME/.bashrc.d/host/vm.sh"
 . "$HOME/.bashrc.d/common/aliases.sh"
 . "$HOME/.bashrc.d/common/functions.sh"
-
-bash -c "$HOME/.bashrc.d/common/prompt.sh"
+. "$HOME/.bashrc.d/common/prompt.sh"
