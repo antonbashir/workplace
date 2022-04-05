@@ -185,15 +185,17 @@ function prompt_label() {
         local directory_color="\[\e[0;38;5;50m\]"
         local white_color="\[\e[0m\]"
         local git_color="\[\e[0;38;5;156m\]"
-
+        local architecture_color="\[\e[0;38;5;134m\]"
+        
         local time_part="$time_color\T"
         local user_part="$user_host_color\u"
         local host_part="$user_host_color\H"
         local user_host_part="$user_part$sign_color@$host_part"
+        local architecture_part="$architecture_color$(dpkg --print-architecture)"
         local directory_part="$directory_color\w"
         local command_part="$sign_color($(echo -e '🐺'))$white_color"
 
-        PS1="$time_part $user_host_part $directory_part$git_color\$GIT_BRANCH\n$command_part "
+        PS1="$time_part $user_host_part $architecture_part $directory_part$git_color\$GIT_BRANCH\n$command_part "
 }
 
 function prompt_command() {
