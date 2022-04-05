@@ -3,7 +3,7 @@
 if [[ $(id -u) -ne 0 ]] ; then
   echo "Use sudo to run this script"
 else
-  adduser -m -s /bin/bash developer
+  adduser -h -s /bin/bash developer
   passwd developer
 
   apk sudo apk add nano htop iftop rsync tree git wget curl ssh iproute2
