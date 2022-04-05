@@ -1,0 +1,24 @@
+#!/bin/bash
+
+useradd -m -s /bin/bash developer
+passwd developer
+
+apt update
+apt upgrade
+apt full-upgrade
+apt install -y aptitude
+aptitude install -y sudo nano htop iftop rsync tree git wget curl ssh
+
+service ssh restart
+
+wget -N https://raw.githubusercontent.com/antonbashir/local-linux/main/common.minimal.root.bashrc
+mv common.minimal.root.bashrc /root/.bashrc
+
+wget -N https://raw.githubusercontent.com/antonbashir/local-linux/main/common.minimal.bashrc
+mv common.minimal.bashrc /home/developer/.bashrc
+
+echo "developer ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/username
+chown -R developer:developer /home/developer
+
+chmod +x /root/.bashrc
+chmod +x /home/developer/.bashrc
