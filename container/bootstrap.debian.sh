@@ -27,7 +27,8 @@ else
             nodejs \
             micro  \
             clang \
-            gcc
+            gcc \
+            tarantool
 
 
   wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
