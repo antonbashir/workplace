@@ -11,11 +11,8 @@ aptitude install -y sudo nano htop iftop rsync tree git wget curl ssh
 
 service ssh restart
 
-wget -N https://raw.githubusercontent.com/antonbashir/local-linux/main/common.minimal.root.bashrc
-mv common.minimal.root.bashrc /root/.bashrc
-
-wget -N https://raw.githubusercontent.com/antonbashir/local-linux/main/common.minimal.bashrc
-mv common.minimal.bashrc /home/developer/.bashrc
+git clone https://github.com/antonbashir/local-linux "$HOME/.bashrc.d"
+cp "$HOME/.bashrc.d/container/container.sh" "$HOME/.bashrc"
 
 echo "developer ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/username
 chown -R developer:developer /home/developer
