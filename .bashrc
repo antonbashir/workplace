@@ -26,13 +26,29 @@ alias ll='ls -alt --color=always --time-style=long-iso'
 alias rm='rm -rf'
 alias apt='sudo aptitude'
 alias transfer='rsync -ah --info=progress2'
-alias pack='tar cf'
-alias unpack='tar xf'
+alias pack='tar -cf'
+alias unpack='tar -xf'
 alias mount='mount | column -t'
 alias path='echo -e ${PATH//:/\\n}'
 alias tree='tree -Ca'
 alias root='sudo -i'
 alias download="wget -N"
+
+systemUser() {
+        sudo useradd --system --no-create-home -s /sbin/nologin $1
+}
+
+toUnix() {
+        find $1 -type f -print0 | xargs -0 dos2unix
+}
+
+certificate() {
+        openssl req -x509 -newkey rsa:4096 -keyout $1.key -out $1.cert -sha256 -days 365 -nodes -subj '/CN=$2'
+}
+
+prepare() {
+        sudo apt install -y wget rsync tar aptitude iproute2
+}
 
 vm() {
         if [ "$1" == "new" ]; then
@@ -75,7 +91,7 @@ vm() {
         fi
 
         if [ "$1" == "configure" ]; then
-        sudo apt install lxc lxcfs lxc-templates
+        sudo apt install -y lxc lxcfs lxc-templates
 
         cat <<EOF > configure-dns
 dhcp-host=connect.local,192.168.128.2
