@@ -9,6 +9,8 @@ alias path='echo -e ${PATH//:/\\n}'
 alias tree='tree -Ca'
 alias download="wget -N"
 alias occupied='du -d 1 -h'
+alias files='files -d -e -H -r'
+alias traffic='sudo iftop'
 
 dir() {
         if [ ! -d "$1" ]; then
