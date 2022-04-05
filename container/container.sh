@@ -1,10 +1,6 @@
 #!/bin/bash
 
 [ -z "$PS1" ] && return
-shopt -s checkwinsize
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
 
 if [ -x /usr/lib/command-not-found ] && [ -x /usr/share/command-not-found/command-not-found ]; then
         function command_not_found_handle {
