@@ -101,6 +101,10 @@ vm() {
                 return
         fi
 
+        if [ "$1" == "ip" ]; then
+                sudo lxc-info -n $2 -iH
+                return
+        fi
 
         if [ "$1" == "unpack" ]; then
                 lxc-stop -n $2 -k > /dev/null 2>&1
