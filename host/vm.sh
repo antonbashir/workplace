@@ -25,6 +25,11 @@ vm() {
                 return
         fi
 
+        if [ "$1" == "login" ]; then
+                ssh $3@$(sudo lxc-info -n $2 -iH)
+                return
+        fi
+
         if [ "$1" == "start" ]; then
                 sudo lxc-start -n $2
                 return
