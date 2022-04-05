@@ -33,6 +33,8 @@ alias path='echo -e ${PATH//:/\\n}'
 alias tree='tree -Ca'
 alias download="wget -N"
 alias occupied='du -d 1 -h'
+alias files='files -d -e -H -r'
+alias traffic='sudo iftop'
 
 systemUser() {
         useradd --system --no-create-home -s /sbin/nologin $1
@@ -47,7 +49,7 @@ certificate() {
 }
 
 prepare() {
-        apt install -y wget rsync tar aptitude iproute2
+        apt install -y wget rsync tar aptitude iproute2 iftop
 }
 
 vm() {
