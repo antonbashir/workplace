@@ -13,6 +13,7 @@ alias download="wget -N"
 alias occupied='du -d 1 -h'
 alias files='files -d -e -H -r'
 alias traffic='sudo iftop'
+alias process='ps aux | grep'
 
 if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "alpine" ]; then
   alias package='sudo apk'

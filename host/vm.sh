@@ -15,8 +15,8 @@ vm() {
         fi
 
         if [ "$1" == "forward" ]; then
-                sudo iptables --table nat --append PREROUTING -p tcp -i eth0 -m tcp --dport $2 -j DNAT --to-destination $(sudo lxc-info -n $3 -iH)
-                sudo iptables --table nat --append PREROUTING -p udp -i eth0 -m udp --dport $2 -j DNAT --to-destination $(sudo lxc-info -n $3 -iH)
+                sudo iptables -t nat -A PREROUTING -p tcp -i eth0 -m tcp --dport $2 -j DNAT --to-destination $(sudo lxc-info -n $3 -iH)
+                sudo iptables -t nat -A PREROUTING -p udp -i eth0 -m udp --dport $2 -j DNAT --to-destination $(sudo lxc-info -n $3 -iH)
                 return
         fi
 
