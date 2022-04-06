@@ -35,8 +35,8 @@ else
   mv nnn-musl-static /usr/bin/files
   rm -rf nnn-musl-static-4.4.x86_64.tar.gz
 
- curl -L https://tarantool.io/KKkJBXq/release/2.8/installer.sh | bash
- aptitude install -y tarantool
+  curl -L https://tarantool.io/KKkJBXq/release/2.8/installer.sh | bash
+  aptitude install -y tarantool
 
   service ssh restart
 
