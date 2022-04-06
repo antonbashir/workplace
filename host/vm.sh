@@ -46,11 +46,9 @@ vm() {
         fi
 
         if [ "$1" == "pack" ]; then
-                sudo lxc-stop -n $2 -k > /dev/null 2>&1
                 current=$(pwd)
                 user=$USER
                 sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner -cpf $current/$3 ./* && chown -R $user:$user $current/$3"
-                sudo lxc-start -n $2 > /dev/null 2>&1
                 return
         fi
 
@@ -71,10 +69,8 @@ vm() {
         fi
 
         if [ "$1" == "unpack" ]; then
-                sudo lxc-stop -n $2 -k > /dev/null 2>&1
                 sudo bash -c "rm -rf /var/lib/lxc/$2/rootfs/*"
                 sudo bash -c "tar --numeric-owner -xpf $3 -C /var/lib/lxc/$2/rootfs"
-                sudo lxc-start -n $2 > /dev/null 2>&1
                 return
         fi
 
