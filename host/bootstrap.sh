@@ -14,7 +14,7 @@ else
         git \
         wget \
         curl \
-        ssh \
+        openssh \
         iproute2 \
         util-linux \
         neofetch \
