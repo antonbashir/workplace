@@ -51,10 +51,16 @@ vm() {
                 return
         fi
 
-        if [ "$1" == "pack" ]; then
+        if [ "$1" == "backup" ]; then
                 current=$(pwd)
                 user=$USER
                 sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner -cpf $current/$3 ./* && chown -R $user:$user $current/$3"
+                return
+        fi
+
+        if [ "$1" == "restore" ]; then
+                sudo bash -c "rm -rf /var/lib/lxc/$2/rootfs/*"
+                sudo bash -c "tar --numeric-owner -xpf $3 -C /var/lib/lxc/$2/rootfs"
                 return
         fi
 
@@ -71,12 +77,6 @@ vm() {
 
         if [ "$1" == "ip" ]; then
                 sudo lxc-info -n $2 -iH
-                return
-        fi
-
-        if [ "$1" == "unpack" ]; then
-                sudo bash -c "rm -rf /var/lib/lxc/$2/rootfs/*"
-                sudo bash -c "tar --numeric-owner -xpf $3 -C /var/lib/lxc/$2/rootfs"
                 return
         fi
 
