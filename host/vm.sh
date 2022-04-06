@@ -22,7 +22,7 @@ vm() {
         fi
 
         if [ "$1" == "deny" ]; then
-                sudo iptables -t nat --list-rules | grep $3 | sed 's/^-A /iptables -t nat -D /g;s/$/;/g' | xargs -I '{}' sudo bash -c '{}'
+                sudo iptables -t nat --list-rules | grep $2 | sed 's/^-A /iptables -t nat -D /g;s/$/;/g' | xargs -I '{}' sudo bash -c '{}'
                 return
         fi
 
