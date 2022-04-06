@@ -26,8 +26,13 @@ else
             nodejs \
             micro  \
             clang \
-            gcc
+            gcc \
+            apt-transport-https
 
+  wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/dart.gpg
+  echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | tee /etc/apt/sources.list.d/dart_stable.list
+  aptitude update
+  aptitude -y install dart
 
   wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
   tar xf nnn-musl-static-4.4.x86_64.tar.gz
@@ -52,4 +57,7 @@ else
 
   chmod +x /root/.profile
   chmod +x /home/developer/.profile
+
+  echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "$HOME/.profile"
+  echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "/home/developer/.profile"
 fi
