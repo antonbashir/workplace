@@ -15,6 +15,7 @@ vm() {
         fi
 
         if [ "$1" == "forward" ]; then
+                sudo iptables -t nat --list-rules | grep '$3' | sed 's/^-A /iptables -t nat -D /g;s/$/;/g' | xargs -I '{}' sudo bash -c '{}'
                 sudo iptables -t nat -A PREROUTING -p tcp -i eth0 -m tcp --dport $3 -j DNAT --to-destination "$(sudo lxc-info -n $2 -iH)"
                 sudo iptables -t nat -A PREROUTING -p udp -i eth0 -m udp --dport $3 -j DNAT --to-destination "$(sudo lxc-info -n $2 -iH)"
                 return
