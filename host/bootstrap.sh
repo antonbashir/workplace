@@ -44,7 +44,7 @@ else
           git \
           wget \
           curl \
-          openssh \
+          ssh \
           iproute2 \
           bsdmainutils \
           neofetch \
