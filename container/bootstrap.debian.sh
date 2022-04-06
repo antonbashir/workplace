@@ -9,7 +9,6 @@ else
   apt update
   apt install -y aptitude
   aptitude install -y sudo \
-            sudo \
             nano \
             htop \
             iftop \
