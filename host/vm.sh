@@ -81,7 +81,7 @@ vm() {
         fi
 
         if [ "$1" == "mount" ]; then
-                sshfs "developer@$(sudo lxc-info -n $2 -iH)":$3 $4
+                sshfs "developer@$(sudo lxc-info -n $2 -iH):$3" $4
                 return
         fi
 
