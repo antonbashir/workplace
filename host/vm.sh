@@ -15,8 +15,8 @@ vm() {
         fi
 
         if [ "$1" == "forward" ]; then
-                sudo iptables -t nat -A PREROUTING -p tcp -i eth0 -m tcp --dport $2 -j DNAT --to-destination "$(sudo lxc-info -n $3 -iH)"
-                sudo iptables -t nat -A PREROUTING -p udp -i eth0 -m udp --dport $2 -j DNAT --to-destination "$(sudo lxc-info -n $3 -iH)"
+                sudo iptables -t nat -A PREROUTING -p tcp -i eth0 -m tcp --dport $3 -j DNAT --to-destination "$(sudo lxc-info -n $2 -iH)"
+                sudo iptables -t nat -A PREROUTING -p udp -i eth0 -m udp --dport $3 -j DNAT --to-destination "$(sudo lxc-info -n $2 -iH)"
                 return
         fi
 
@@ -51,6 +51,17 @@ vm() {
                 user=$USER
                 sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner -cpf $current/$3 ./* && chown -R $user:$user $current/$3"
                 sudo lxc-start -n $2 > /dev/null 2>&1
+                return
+        fi
+
+        if [ "$1" == "put" ]; then
+                sudo cp -r $3 /var/lib/lxc/$2/rootfs/$4
+                sudo lxc-attach -n $2 -- chown -R developer:developer $4
+                return
+        fi
+
+        if [ "$1" == "get" ]; then
+                sudo cp -r /var/lib/lxc/$2/rootfs/$3 $4
                 return
         fi
 
