@@ -80,6 +80,11 @@ vm() {
                 return
         fi
 
+        if [ "$1" == "mount" ]; then
+                sshfs "developer@$(sudo lxc-info -n $2 -iH)":$3 $4
+                return
+        fi
+
         if [ "$1" == "configure" ]; then
         sudo apt install -y lxc lxcfs lxc-templates
 
