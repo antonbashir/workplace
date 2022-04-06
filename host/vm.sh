@@ -54,7 +54,7 @@ vm() {
         if [ "$1" == "backup" ]; then
                 current=$(pwd)
                 user=$USER
-                sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner -cpf $current/$3 ./* && chown -R $user:$user $current/$3"
+                sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner --one-file-system -cpf $current/$3 ./* && chown -R $user:$user $current/$3"
                 return
         fi
 
