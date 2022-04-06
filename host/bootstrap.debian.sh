@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo aptitude install -y
+sudo aptitude install -y \
       nano \
       htop \
       iftop \

@@ -37,6 +37,7 @@ else
   rm -rf nnn-musl-static-4.4.x86_64.tar.gz
 
   service sshd restart
+  rc-update add sshd.eth0 default
 
   rm -rf /home/developer/.profile.d
   git clone https://github.com/antonbashir/local-linux "/home/developer/.profile.d"
