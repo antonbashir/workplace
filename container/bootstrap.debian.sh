@@ -27,6 +27,7 @@ else
             micro  \
             clang \
             gcc \
+            gpg \
             apt-transport-https
 
   wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/dart.gpg
