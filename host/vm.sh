@@ -107,7 +107,7 @@ vm() {
                 return
         fi
 
-        if [ "$1" == "mount" ]; then
+        if [ "$1" == "help" ]; then
                 echo "vm command helps you to manage LXC containers"
                 echo "vm new debian test - create Debian LXC container named test"
                 echo "vm new alpine test - create Alpine LXC container named test"
