@@ -23,7 +23,7 @@ sudo apk add \
     pass \
     sshfs
 
-SUDO wget https://github.com/antonbashir/local-linux-packages/raw/9ab9daa4b3fa4887fb05ec7d3542814bb0317101/alpine/tarantool/2.8.3/tarantool-2.8.3-r0.apk
+sudo wget https://github.com/antonbashir/local-linux-packages/raw/9ab9daa4b3fa4887fb05ec7d3542814bb0317101/alpine/tarantool/2.8.3/tarantool-2.8.3-r0.apk
 sudo apk add --allow-untrusted tarantool-2.8.3-r0.apk
 sudo rm -rf tarantool-2.8.3-r0.apk
 
