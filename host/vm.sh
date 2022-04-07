@@ -64,6 +64,28 @@ vm() {
                 return
         fi
 
+        if [ "$1" == "export" ]; then
+                current=$(pwd)
+                user=$USER
+                sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner --one-file-system -cpf $current/$2.tar.gz ./* && chown -R $user:$user $current/$2.tar.gz"
+                return
+        fi
+
+        if [ "$1" == "import" ]; then
+                current=$(pwd)
+                user=$USER
+                if [ "$2" == "debian" ]; then
+                    sudo lxc-create -t download -n $3 -- --no-validate -d debian -r bullseye -a amd64
+                fi
+
+                if [ "$2" == "alpine" ]; then
+                        sudo lxc-create -t download -n $3 -- --no-validate -d alpine -r edge -a amd64
+                fi
+                sudo bash -c "rm -rf /var/lib/lxc/$3/rootfs/*"
+                sudo bash -c "tar --numeric-owner -xpf $4 -C /var/lib/lxc/$3/rootfs"
+                return
+        fi
+
         if [ "$1" == "put" ]; then
                 sudo cp -r $3 /var/lib/lxc/$2/rootfs/$4
                 sudo lxc-attach -n $2 -- chown -R developer:developer $4
