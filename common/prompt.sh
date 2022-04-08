@@ -13,7 +13,16 @@ function prompt_label() {
         local host_part="$user_host_color\H"
         local user_host_part="$user_part$sign_color@$host_part"
         local directory_part="$directory_color\w"
-        local architecture_part="$architecture_color$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)-$(uname -m)"
+        local architecture_part=""
+
+        if [ "$(uname)" == "Darwin" ]; then
+            local architecture_part="$architecture_color$(echo osx-$(uname -m))"
+        fi
+
+        if [ -f /etc/os-release ]; then
+            local architecture_part="$architecture_color$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)-$(uname -m)"
+        fi
+
         local command_part="$sign_color($(echo -e '🦊'))$white_color"
 
         PS1="$time_part $user_host_part $architecture_part $directory_part$git_color\$GIT_BRANCH\n$command_part "
@@ -31,7 +40,16 @@ function prompt_label() {
         local user_part="$user_host_color\u"
         local host_part="$user_host_color\H"
         local user_host_part="$user_part$sign_color@$host_part"
-        local architecture_part="$architecture_color$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)-$(uname -m)"
+        local architecture_part=""
+
+        if [ "$(uname)" == "Darwin" ]; then
+            local architecture_part="$architecture_color$(echo osx-$(uname -m))"
+        fi
+
+        if [ -f /etc/os-release ]; then
+            local architecture_part="$architecture_color$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)-$(uname -m)"
+        fi
+
         local directory_part="$directory_color\w"
         local command_part="$sign_color($(echo -e '🐺'))$white_color"
 
