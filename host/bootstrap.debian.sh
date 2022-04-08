@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $(id -u) == 0 ]] ; then
+      apt update
+      apt install -y sudo aptitude
+fi
+
 sudo aptitude install -y \
       nano \
       htop \
