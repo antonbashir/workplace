@@ -30,7 +30,7 @@ sudo aptitude install -y \
       apt-transport-https \
       asciinema \
       lxc \
-      lcxfs \
+      lxcfs \
       lxc-templates
 
 sudo wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/dart.gpg
