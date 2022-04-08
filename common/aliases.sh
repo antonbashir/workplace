@@ -1,8 +1,8 @@
 #!/bin/bash
 
-alias ll='ls -alt --color=always'
+alias ll='ls -alt'
 alias rm='rm -rf'
-alias transfer='rsync -ah --info=progress2'
+alias transfer='rsync -ah'
 alias pack='tar -cpf'
 alias unpack='tar -xpf'
 alias mount='mount | column -t'
