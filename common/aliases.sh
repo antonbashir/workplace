@@ -15,10 +15,17 @@ alias files='files -d -e -H'
 alias traffic='sudo iftop'
 alias process='ps aux | grep'
 
-if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "alpine" ]; then
-  alias package='sudo apk'
+
+if [ "$(uname)" == "Darwin" ]; then
+  alias package='sudo brew'
 fi
 
-if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "debian" ]; then
-  alias package='sudo aptitude'
+if [ -f /etc/os-release ]; then
+  if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "alpine" ]; then
+    alias package='sudo apk'
+  fi
+
+  if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "debian" ]; then
+    alias package='sudo aptitude'
+  fi
 fi
