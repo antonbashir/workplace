@@ -17,8 +17,7 @@ alias process='ps aux | grep'
 
 
 if [ "$(uname)" == "Darwin" ]; then
-  alias vm='prlctl exec local vm'
-  alias package='sudo brew'
+  alias package='brew'
 fi
 
 if [ -f /etc/os-release ]; then
