@@ -58,10 +58,17 @@ function prompt_label() {
 }
 
 function prompt_command() {
-        if [ -f "/usr/bin/git" ] && [ -d "$(pwd)/.git" ]; then
-                export GIT_BRANCH=" $(git branch --show-current)"
-        else
-                export GIT_BRANCH=""
+        export GIT_BRANCH=""
+        if [ -f "/usr/bin/git" ]; then
+              current_directory=`pwd`
+              while [[ "`pwd`" != '/' ]]; do
+                  if [[ -d "$(pwd)/.git" ]]; then
+                      export GIT_BRANCH=" $(git branch --show-current)"
+                    break
+                  fi
+                  cd ..
+                done
+                cd "$current_directory"
         fi
 }
 
