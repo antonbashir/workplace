@@ -19,3 +19,7 @@ toFile() {
 toDir() {
         sudo chmod 755 $1
 }
+
+reload() {
+  cd "$HOME/.profile.d" && git pull
+}
