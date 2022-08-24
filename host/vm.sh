@@ -15,8 +15,14 @@ vm() {
         fi
 
         if [ "$1" == "forward" ]; then
+                sudo iptables -t nat --list-rules | grep $3 | sed 's/^-A /iptables -t nat -D /g;s/$/;/g' | xargs -I '{}' sudo bash -c '{}'
                 sudo iptables -t nat -A PREROUTING -p tcp -i eth0 -m tcp --dport $3 -j DNAT --to-destination "$(sudo lxc-info -n $2 -iH)"
                 sudo iptables -t nat -A PREROUTING -p udp -i eth0 -m udp --dport $3 -j DNAT --to-destination "$(sudo lxc-info -n $2 -iH)"
+                return
+        fi
+
+        if [ "$1" == "deny" ]; then
+                sudo iptables -t nat --list-rules | grep $2 | sed 's/^-A /iptables -t nat -D /g;s/$/;/g' | xargs -I '{}' sudo bash -c '{}'
                 return
         fi
 
@@ -45,12 +51,39 @@ vm() {
                 return
         fi
 
-        if [ "$1" == "pack" ]; then
-                sudo lxc-stop -n $2 -k > /dev/null 2>&1
+        if [ "$1" == "backup" ]; then
                 current=$(pwd)
                 user=$USER
-                sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner -cpf $current/$3 ./* && chown -R $user:$user $current/$3"
-                sudo lxc-start -n $2 > /dev/null 2>&1
+                sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner --one-file-system -cpf $current/$3 ./* && chown -R $user:$user $current/$3"
+                return
+        fi
+
+        if [ "$1" == "restore" ]; then
+                sudo bash -c "rm -rf /var/lib/lxc/$2/rootfs/*"
+                sudo bash -c "tar --numeric-owner -xpf $3 -C /var/lib/lxc/$2/rootfs"
+                return
+        fi
+
+
+        if [ "$1" == "export" ]; then
+                current=$(pwd)
+                user=$USER
+                sudo bash -c "cd /var/lib/lxc/$2/rootfs && tar --numeric-owner --one-file-system -cpf $current/$2.tar.gz ./* && chown -R $user:$user $current/$2.tar.gz"
+                return
+        fi
+
+        if [ "$1" == "import" ]; then
+                current=$(pwd)
+                user=$USER
+                if [ "$2" == "debian" ]; then
+                    sudo lxc-create -t download -n $3 -- --no-validate -d debian -r bullseye -a amd64
+                fi
+
+                if [ "$2" == "alpine" ]; then
+                        sudo lxc-create -t download -n $3 -- --no-validate -d alpine -r edge -a amd64
+                fi
+                sudo bash -c "rm -rf /var/lib/lxc/$3/rootfs/*"
+                sudo bash -c "tar --numeric-owner -xpf $4 -C /var/lib/lxc/$3/rootfs"
                 return
         fi
 
@@ -70,11 +103,32 @@ vm() {
                 return
         fi
 
-        if [ "$1" == "unpack" ]; then
-                sudo lxc-stop -n $2 -k > /dev/null 2>&1
-                sudo bash -c "rm -rf /var/lib/lxc/$2/rootfs/*"
-                sudo bash -c "tar --numeric-owner -xpf $3 -C /var/lib/lxc/$2/rootfs"
-                sudo lxc-start -n $2 > /dev/null 2>&1
+        if [ "$1" == "mount" ]; then
+                sshfs "developer@$(sudo lxc-info -n $2 -iH)":$3 $4
+                return
+        fi
+
+        if [ "$1" == "help" ]; then
+                echo "vm command helps you to manage LXC containers"
+                echo "[vm new debian test] - create Debian LXC container named test"
+                echo "[vm new alpine test] - create Alpine LXC container named test"
+                echo "[vm forward test 8080:8090] - forwards 8080-8090 ports from your current host to the container"
+                echo "[vm deny 8080:8090] - disable the forwarding"
+                echo "[vm shell test] - attache to LXC the container"
+                echo "[vm login test developer] - SSH login to LXC the container"
+                echo "[vm start test] - start the LXC container"
+                echo "[vm stop test] - stop the LXC container"
+                echo "[vm rm test] - destroy the LXC container"
+                echo "[vm backup test test.tar.gz] - export rootfs of the LXC container to the archive"
+                echo "[vm restore test test.tar.gz] - import rootfs of the LXC container from the archive"
+                echo "[vm export test] - export rootfs of the LXC container to the archive named test.tar.gz in your current directory"
+                echo "[vm import debian test test.tar.gz] - create Debian LXC container named test from the archive"
+                echo "[vm import alpine test test.tar.gz] - create Alpine LXC container named test from the archive"
+                echo "[vm put test test.file] - copy the file to the LXC container"
+                echo "[vm get test remote.file local.file] - copy remote.file from test container to local.file"
+                echo "[vm ip test] - show IP address of the LXC container"
+                echo "[vm mount test /home/developer/remote local] - mount the remote path of the LXC container to the local point"
+                echo "[vm configure] - configure host settings for LXC"
                 return
         fi
 
