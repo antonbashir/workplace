@@ -51,3 +51,5 @@ git clone https://github.com/antonbashir/local-linux "$HOME/.profile.d"
 cp "$HOME/.profile.d/host/host.sh" "$HOME/.profile"
 
 echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "$HOME/.profile"
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
