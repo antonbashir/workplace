@@ -43,3 +43,5 @@ cp "$HOME/.profile.d/host/host.sh" "$HOME/.profile"
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
