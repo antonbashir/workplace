@@ -40,3 +40,6 @@ rm -rf nnn-musl-static-4.4.x86_64.tar.gz
 rm -rf "$HOME/.profile.d"
 git clone https://github.com/antonbashir/local-linux "$HOME/.profile.d"
 cp "$HOME/.profile.d/host/host.sh" "$HOME/.profile"
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
