@@ -61,4 +61,6 @@ else
 
   echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "$HOME/.profile"
   echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "/home/developer/.profile"
+  echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> "$HOME/.profile"
+  echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> "/home/developer/.profile"
 fi
