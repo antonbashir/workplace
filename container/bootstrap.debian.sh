@@ -21,7 +21,6 @@ else
             iproute2 \
             bsdmainutils \
             neofetch \
-            openjdk-11-jdk \
             python3 \
             nodejs \
             micro  \
@@ -34,14 +33,6 @@ else
   echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | tee /etc/apt/sources.list.d/dart_stable.list
   aptitude update
   aptitude -y install dart
-
-  wget https://github.com/jarun/nnn/releases/download/v4.4/nnn-musl-static-4.4.x86_64.tar.gz
-  tar xf nnn-musl-static-4.4.x86_64.tar.gz
-  mv nnn-musl-static /usr/bin/files
-  rm -rf nnn-musl-static-4.4.x86_64.tar.gz
-
-  curl -L https://tarantool.io/KKkJBXq/release/2.8/installer.sh | bash
-  aptitude install -y tarantool
 
   service ssh restart
 
