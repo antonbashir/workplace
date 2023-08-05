@@ -18,7 +18,6 @@ sudo aptitude install -y \
       iproute2 \
       bsdmainutils \
       neofetch \
-      openjdk-11-jdk \
       python3 \
       nodejs \
       micro \
