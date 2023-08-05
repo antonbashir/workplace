@@ -11,7 +11,6 @@ alias tree='tree -Ca'
 alias root='sudo -i'
 alias download="wget -N"
 alias occupied='du -d 1 -h'
-alias files='files -d -e -H'
 alias traffic='sudo iftop'
 alias process='ps aux | grep'
 
