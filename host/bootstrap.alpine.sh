@@ -18,7 +18,6 @@ sudo apk add \
         iproute2 \
         util-linux \
         neofetch \
-        openjdk11 \
         python3 \
         nodejs \
         micro \
