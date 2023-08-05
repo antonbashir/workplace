@@ -55,6 +55,6 @@ echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> "$HOME/.profile"
 
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install --all
 
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
