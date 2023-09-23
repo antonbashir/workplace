@@ -25,7 +25,6 @@ if [ "$(uname)" != "Darwin" ]; then
             }
     fi
     . "$HOME/.profile.d/host/vm.sh"
-    . /etc/bash_completion.d/hal
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 fi
 
