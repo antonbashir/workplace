@@ -3,12 +3,12 @@
 vm() {
         if [ "$1" == "new" ]; then
                 if [ "$2" == "debian" ]; then
-                        sudo lxc-create -t download -n $3 -- --no-validate -d debian -r bullseye -a amd64
+                        sudo lxc-create -t download -n $3 -- -d debian -r bookworm -a amd64
                         return
                 fi
 
                 if [ "$2" == "alpine" ]; then
-                        sudo lxc-create -t download -n $3 -- --no-validate -d alpine -r edge -a amd64
+                        sudo lxc-create -t download -n $3 -- -d alpine -r edge -a amd64
                         return
                 fi
                 return
