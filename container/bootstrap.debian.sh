@@ -4,6 +4,8 @@ if [[ $(id -u) -ne 0 ]] ; then
   echo "Use sudo to run this script"
 else
   /sbin/useradd -m -s /bin/bash developer
+  sudo mkdir /home/developer
+  sudo chown -R developer:developer /home/developer/
   passwd developer
 
   apt update
