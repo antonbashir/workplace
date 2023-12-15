@@ -3,7 +3,7 @@
 if [[ $(id -u) -ne 0 ]] ; then
   echo "Use sudo to run this script"
 else
-  useradd -m -s /bin/bash developer
+  /sbin/useradd -m -s /bin/bash developer
   passwd developer
 
   apt update
