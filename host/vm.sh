@@ -4,11 +4,13 @@ vm() {
         if [ "$1" == "new" ]; then
                 if [ "$2" == "debian" ]; then
                         sudo lxc-create -t download -n $3 -- -d debian -r bookworm -a amd64
+			sudo sed -i 's/lxcbr0/lxc-network/g' /var/lib/lxc/$3/config
                         return
                 fi
 
                 if [ "$2" == "alpine" ]; then
                         sudo lxc-create -t download -n $3 -- -d alpine -r edge -a amd64
+			sudo sed -i 's/lxcbr0/lxc-network/g' /var/lib/lxc/$3/config
                         return
                 fi
                 return
