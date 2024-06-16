@@ -35,10 +35,14 @@ else
 
   rm -rf /home/developer/.profile.d
   git clone https://github.com/antonbashir/local-linux "/home/developer/.profile.d"
+  rm -rf "/home/developer/.profile.old"
+  cp "/home/developer/.profile" "$HOME/.profile.old"
   cp "/home/developer/.profile.d/container/container.sh" "/home/developer/.profile"
 
   rm -rf "$HOME/.profile.d"
   git clone https://github.com/antonbashir/local-linux "$HOME/.profile.d"
+  rm -rf "$HOME/.profile.old"
+  cp "$HOME/.profile" "$HOME/.profile.old"
   cp "$HOME/.profile.d/container/container.sh" "$HOME/.profile"
 
   echo "developer ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/username

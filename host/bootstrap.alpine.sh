@@ -27,6 +27,8 @@ sudo apk add \
 
 rm -rf "$HOME/.profile.d"
 git clone https://github.com/antonbashir/local-linux "$HOME/.profile.d"
+rm -rf "$HOME/.profile.old"
+cp "$HOME/.profile" "$HOME/.profile.old"
 cp "$HOME/.profile.d/host/host.sh" "$HOME/.profile"
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
