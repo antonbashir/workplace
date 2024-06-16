@@ -19,6 +19,7 @@ sudo apk add \
         python3 \
         nodejs \
         micro \
+        sshfs \
         clang \
         gcc \
         lxc \
