@@ -1,8 +1,6 @@
 #!/bin/bash
 
-if [[ $(id -u) == 0 ]] ; then
-  apk add sudo aptitude
-fi
+apk add sudo
 
 sudo apk add \
         sudo \
