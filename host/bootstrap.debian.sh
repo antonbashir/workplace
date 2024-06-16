@@ -43,3 +43,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+
+if [[ $(grep microsoft /proc/version) ]]; then
+  sudo mkdir -p /sys/fs/cgroup/systemd && sudo mount -t cgroup cgroup -o none,name=systemd /sys/fs/cgroup/systemd
+fi
