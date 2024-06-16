@@ -30,6 +30,9 @@ else
   service sshd restart
   rc-update add sshd default
 
+  mkdir -p /home/developer
+  chown -R developer:developer /home/developer
+
   rm -rf /home/developer/.profile.d
   git clone https://github.com/antonbashir/local-linux "/home/developer/.profile.d"
   rm -rf "/home/developer/.profile.old"
