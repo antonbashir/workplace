@@ -29,7 +29,8 @@ else
             clang \
             gcc \
             gpg \
-            apt-transport-https
+            apt-transport-https \
+            unzip
 
   service ssh restart
 
