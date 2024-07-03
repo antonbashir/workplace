@@ -23,7 +23,8 @@ sudo apk add \
         clang \
         gcc \
         lxc \
-        lxcfs
+        lxcfs \
+        unzip
 
 rm -rf "$HOME/.profile.d"
 git clone https://github.com/antonbashir/local-linux "$HOME/.profile.d"
