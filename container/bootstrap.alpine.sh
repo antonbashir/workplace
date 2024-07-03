@@ -24,7 +24,8 @@ else
         nodejs \
         micro \
         clang \
-        gcc
+        gcc \
+        unzip
 
 
   service sshd restart
