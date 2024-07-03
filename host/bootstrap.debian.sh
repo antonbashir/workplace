@@ -33,7 +33,8 @@ sudo aptitude install -y \
       asciinema \
       lxc \
       lxcfs \
-      lxc-templates
+      lxc-templates \
+      unzip
 
 rm -rf "$HOME/.profile.d"
 git clone https://github.com/antonbashir/local-linux "$HOME/.profile.d"
