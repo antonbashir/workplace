@@ -57,7 +57,7 @@ else
   rm -rf "$HOME/.profile"
   rm -rf "$HOME/.bashrc"
   rm -rf "$HOME/.bash_profile"
-  cp "$HOME/.profile.d/host/host.sh" "$HOME/.profile"
+  cp "$HOME/.profile.d/container/container.sh" "$HOME/.profile"
   ln -s "$HOME/.profile" "$HOME/.bashrc"
   ln -s "$HOME/.profile" "$HOME/.bash_profile"
 
@@ -72,7 +72,7 @@ else
   rm -rf "/home/developer/.profile"
   rm -rf "/home/developer/.bashrc"
   rm -rf "/home/developer/.bash_profile"
-  cp "/home/developer/.profile.d/host/host.sh" "/home/developer/.profile"
+  cp "/home/developer/.profile.d/container/container.sh" "/home/developer/.profile"
   ln -s "/home/developer/.profile" "/home/developer/.bashrc"
   ln -s "/home/developer/.profile" "/home/developer/.bash_profile"
 
