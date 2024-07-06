@@ -34,3 +34,8 @@ certificate() {
 . "$HOME/.profile.d/common/aliases.sh"
 . "$HOME/.profile.d/common/functions.sh"
 . "$HOME/.profile.d/common/prompt.sh"
+
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+export PATH="$PATH:/usr/lib/dart/bin"
+export PATH="$PATH:$HOME/.pub-cache/bin"
