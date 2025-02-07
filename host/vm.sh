@@ -15,6 +15,7 @@ network="lxc-network"
 cpu_cores="2"
 ram="4G"
 EOF
+qemu-img resize disk.qcow2 10G
                         return
                 fi
 
