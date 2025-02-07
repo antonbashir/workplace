@@ -15,8 +15,8 @@ network="lxc-network"
 cpu_cores="2"
 ram="4G"
 EOF
-qemu-img resize disk.qcow2 10G
-                        return
+qemu-img resize ~/vms/$3/disk.qcow2 10G 
+                return
                 fi
 
                 if [ "$2" == "start" ]; then
