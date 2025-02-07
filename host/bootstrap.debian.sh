@@ -50,7 +50,7 @@ sudo aptitude install -y \
       unzip  \
       usbutils  \
       util-linux  \
-      uuidgen-runtime  \
+      uuid-runtime  \
       xdg-user-dirs  \
       xrandr  \
       zsync \
