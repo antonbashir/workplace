@@ -42,7 +42,7 @@ sudo aptitude install -y \
       ovmf  \
       pciutils  \
       procps  \
-      qemu  \
+      qemu-system  \
       sed  \
       socat  \
       spice-client-gtk  \
