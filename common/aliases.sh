@@ -17,6 +17,10 @@ if [ "$(uname)" == "Darwin" ]; then
   alias package='brew'
 fi
 
+if [ -f /usr/bin/kitty ]; then
+  alias ssh="kitty +kitten ssh"
+fi
+
 if [ -f /etc/os-release ]; then
   if [ $(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release) == "alpine" ]; then
     alias package='sudo apk'

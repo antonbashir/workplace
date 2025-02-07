@@ -1,6 +1,41 @@
 #!/bin/bash
 
 vm() {
+        if [ "$1" == "emulate" ]; then
+                if [ "$2" == "new" ]; then
+mkdir -p ~/vms/$3
+wget -qO- https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-amd64.qcow2 -O ~/vms/$3/disk.qcow2
+cat <<EOF > ~/vms/$3.conf
+#!/usr/bin/quickemu --vm
+guest_os="linux"
+disk_img="$3/disk.qcow2"
+iso="$3/$3.iso"
+disk_size="10G"
+network="lxc-network"
+cpu_cores="2"
+ram="4G"
+EOF
+                        return
+                fi
+
+                if [ "$2" == "start" ]; then
+                        quickemu --vm ~/vms/$3.conf --display spice
+                        return
+                fi
+
+                if [ "$2" == "stop" ]; then
+                        quickemu --vm ~/vms/$3.conf --kill
+                        return
+                fi
+
+                if [ "$2" == "rm" ]; then
+                        quickemu --vm ~/vms/$3.conf --delete-disk --delete-vm 
+                        rm -rf ~/vms/$3
+                        return
+                fi
+                return
+        fi
+
         if [ "$1" == "new" ]; then
                 if [ "$2" == "debian" ]; then
                         sudo lxc-create -t download -n $3 -- -d debian -r bookworm -a amd64
@@ -134,8 +169,6 @@ vm() {
         fi
 
         if [ "$1" == "configure" ]; then
-        sudo apt install -y lxc lxcfs lxc-templates
-
         cat <<EOF > configure-dns
 dhcp-host=connect.local,192.168.128.2
 EOF
@@ -164,17 +197,16 @@ LXC_DHCP_MAX="253"
 LXC_DHCP_CONFILE="/etc/lxc/dnsmasq.conf"
 LXC_DOMAIN=""
 EOF
-        sudo cp configure-dns /etc/lxc/dnsmasq.conf
-        sudo cp configure-lxc-config /etc/lxc/default.conf
-        sudo cp configure-lxc-default /etc/default/lxc
+          sudo cp configure-dns /etc/lxc/dnsmasq.conf
+          sudo cp configure-lxc-config /etc/lxc/default.conf
+          sudo cp configure-lxc-default /etc/default/lxc
 
-        sudo rm configure-dns
-        sudo rm configure-lxc-config
-        sudo rm configure-lxc-default
+          sudo rm configure-dns
+          sudo rm configure-lxc-config
+          sudo rm configure-lxc-default
 
-        sudo service lxc-net restart
+          sudo service lxc-net restart
+
         return
         fi
-
-        sudo lxc-ls -f
 }
