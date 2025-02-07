@@ -73,8 +73,8 @@ if [[ $(grep microsoft /proc/version) ]]; then
 fi
 
 sudo wget -q https://github.com/quickemu-project/quickemu/releases/download/4.9.7/quickemu_4.9.7-1_all.deb
-sudo aptitude install -y ./quickemu_4.9.7-1_all.deb
-sudo rm -rf ./quickemu_4.9.7-1_all.deb
+sudo aptitude install -y quickemu_4.9.7-1_all.deb
+sudo rm -rf quickemu_4.9.7-1_all.deb
 
 rm -rf "$HOME/.profile.d"
 git clone https://github.com/antonbashir/workplace "$HOME/.profile.d"
