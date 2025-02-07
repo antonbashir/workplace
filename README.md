@@ -6,3 +6,4 @@ Supported Linuxes:
 
 * Alpine based
 * Debian based
+* Arch based
