@@ -52,7 +52,7 @@ sudo aptitude install -y \
       util-linux  \
       uuid-runtime  \
       xdg-user-dirs  \
-      xrandr  \
+      x11-xserver-utils  \
       zsync \
       unzip
 
