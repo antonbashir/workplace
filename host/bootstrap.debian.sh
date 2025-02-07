@@ -62,7 +62,8 @@ sudo aptitude -y install dart
 
 go_archive=$(curl https://go.dev/VERSION?m=text | head -1).linux-amd64.tar.gz
 wget "https://dl.google.com/go/$go_archive"
-tar -xf $go_archive -C $HOME
+sudo mkdir -p /usr/local
+sudo tar -xf $go_archive -C /usr/local
 rm $go_archive
 
 if [[ $(grep microsoft /proc/version) ]]; then

@@ -29,7 +29,8 @@ yay -Sy --noconfirm dart
 
 go_archive=$(curl https://go.dev/VERSION?m=text | head -1).linux-amd64.tar.gz
 wget "https://dl.google.com/go/$go_archive"
-tar -xf $go_archive -C $HOME
+sudo mkdir -p /usr/local
+sudo tar -xf $go_archive -C /usr/local
 rm $go_archive
 
 rm -rf "$HOME/.profile.d"
@@ -49,6 +50,7 @@ ln -s "$HOME/.profile" "$HOME/.bash_profile"
 
 echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "$HOME/.profile"
 echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> "$HOME/.profile"
+echo 'PATH=$PATH:/usr/local/go/bin"' >> "$HOME/.profile"
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
