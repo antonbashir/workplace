@@ -72,7 +72,7 @@ if [[ $(grep microsoft /proc/version) ]]; then
   sudo bash -c "echo 'cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate 0 0' >> /etc/fstab"
 fi
 
-sudo wget -qO- https://github.com/quickemu-project/quickemu/releases/download/4.9.7/quickemu_4.9.7-1_all.deb
+sudo wget -q https://github.com/quickemu-project/quickemu/releases/download/4.9.7/quickemu_4.9.7-1_all.deb
 sudo aptitude install -y ./quickemu_4.9.7-1_all.deb
 sudo rm -rf ./quickemu_4.9.7-1_all.deb
 
