@@ -24,6 +24,7 @@ sudo apk add \
         gcc \
         lxc \
         lxcfs \
+        ncdu \
         unzip
 
 if [[ $(grep microsoft /proc/version) ]]; then

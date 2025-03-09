@@ -54,6 +54,7 @@ sudo aptitude install -y \
       xdg-user-dirs  \
       x11-xserver-utils  \
       zsync \
+      ncdu \
       unzip
 
 sudo wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/dart.gpg
