@@ -25,6 +25,7 @@ else
         micro \
         clang \
         gcc \
+        ncdu \
         unzip
 
   service sshd restart

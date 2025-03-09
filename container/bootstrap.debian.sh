@@ -30,6 +30,7 @@ else
             gcc \
             gpg \
             apt-transport-https \
+            ncdu \
             unzip
 
   service ssh restart
