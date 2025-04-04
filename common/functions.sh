@@ -23,3 +23,7 @@ toDir() {
 reload() {
   cd "$HOME/.profile.d" && git pull
 }
+
+status() {
+  python $HOME/.profile.d/common/status.py $1
+}
