@@ -27,6 +27,8 @@ yay -Sy --noconfirm lxcfs
 yay -Sy --noconfirm lxc-templates
 yay -Sy --noconfirm dart
 yay -Sy --noconfirm ncdu
+yay -Sy --noconfirm fastfetch
+yay -Sy --noconfirm lsd
 
 go_archive=$(curl https://go.dev/VERSION?m=text | head -1).linux-amd64.tar.gz
 wget "https://dl.google.com/go/$go_archive"

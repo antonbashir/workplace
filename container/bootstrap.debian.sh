@@ -22,7 +22,7 @@ else
             ssh \
             iproute2 \
             bsdmainutils \
-            neofetch \
+            fastfetch \
             python3 \
             nodejs \
             micro  \
@@ -31,6 +31,7 @@ else
             gpg \
             apt-transport-https \
             ncdu \
+            lsd \
             unzip
 
   service ssh restart

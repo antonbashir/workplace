@@ -20,7 +20,7 @@ sudo aptitude install -y \
       ssh \
       iproute2 \
       bsdmainutils \
-      neofetch \
+      fastfetch \
       python3 \
       nodejs \
       clang \
@@ -55,6 +55,7 @@ sudo aptitude install -y \
       x11-xserver-utils  \
       zsync \
       ncdu \
+      lsd \
       unzip
 
 sudo wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/dart.gpg

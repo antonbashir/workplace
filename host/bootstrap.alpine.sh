@@ -15,7 +15,7 @@ sudo apk add \
         openssh \
         iproute2 \
         util-linux \
-        neofetch \
+        fastfetch \
         python3 \
         nodejs \
         micro \
@@ -25,6 +25,7 @@ sudo apk add \
         lxc \
         lxcfs \
         ncdu \
+        lsd \
         unzip
 
 if [[ $(grep microsoft /proc/version) ]]; then

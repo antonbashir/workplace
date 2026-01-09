@@ -18,7 +18,7 @@ else
         openssh \
         iproute2 \
         util-linux \
-        neofetch \
+        fastfetch \
         openjdk11 \
         python3 \
         nodejs \
@@ -26,6 +26,7 @@ else
         clang \
         gcc \
         ncdu \
+        lsd \
         unzip
 
   service sshd restart

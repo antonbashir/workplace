@@ -8,18 +8,18 @@ function prompt_label() {
         local git_color="\[\e[0;38;5;156m\]"
         local architecture_color="\[\e[0;38;5;134m\]"
 
-        local time_part="$time_color\T"
+        local time_part="$time_color\t"
         local user_part="$user_host_color\u"
         local host_part="$user_host_color\H"
         local user_host_part="$user_part$sign_color@$host_part"
         local directory_part="$directory_color\w"
         local architecture_part=""
 
-        if [ "$(uname)" == "Darwin" ]; then
+        if [[ "$(uname)" == "Darwin" ]]; then
             local architecture_part="$architecture_color$(echo osx-$(uname -m))"
         fi
 
-        if [ -f /etc/os-release ]; then
+        if [[ -f /etc/os-release ]]; then
             local architecture_part="$architecture_color$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)-$(uname -m)"
         fi
 
@@ -36,17 +36,17 @@ function prompt_label() {
         local git_color="\[\e[0;38;5;156m\]"
         local architecture_color="\[\e[0;38;5;134m\]"
 
-        local time_part="$time_color\T"
+        local time_part="$time_color\t"
         local user_part="$user_host_color\u"
         local host_part="$user_host_color\H"
         local user_host_part="$user_part$sign_color@$host_part"
         local architecture_part=""
 
-        if [ "$(uname)" == "Darwin" ]; then
+        if [[ "$(uname)" == "Darwin" ]]; then
             local architecture_part="$architecture_color$(echo osx-$(uname -m))"
         fi
 
-        if [ -f /etc/os-release ]; then
+        if [[ -f /etc/os-release ]]; then
             local architecture_part="$architecture_color$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)-$(uname -m)"
         fi
 
@@ -59,7 +59,7 @@ function prompt_label() {
 
 function prompt_command() {
         export GIT_BRANCH=""
-        if [ -f "/usr/bin/git" ]; then
+        if [[ -f "/usr/bin/git" ]]; then
               current_directory=`pwd`
               while [[ "`pwd`" != '/' ]]; do
                   if [[ -d "$(pwd)/.git" ]]; then
