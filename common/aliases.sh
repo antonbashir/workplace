@@ -1,6 +1,8 @@
 #!/bin/bash
 
 alias ll='ls -alt'
+alias list='ls -alt'
+alias list-sized='ls -lShr'
 alias rm='rm -rf'
 alias transfer='rsync -ah'
 alias pack='tar -cpf'
