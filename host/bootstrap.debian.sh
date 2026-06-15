@@ -1,62 +1,62 @@
 #!/bin/bash
 
-if [[ $(id -u) == 0 ]] ; then
-      apt update
-      apt install -y sudo aptitude
+if [[ $(id -u) == 0 ]]; then
+	apt update
+	apt install -y sudo aptitude
 else
-      sudo apt update
-      sudo apt install -y sudo aptitude
+	sudo apt update
+	sudo apt install -y sudo aptitude
 fi
 
 sudo aptitude install -y \
-      nano \
-      htop \
-      iftop \
-      rsync \
-      tree \
-      git \
-      wget \
-      curl \
-      ssh \
-      iproute2 \
-      bsdmainutils \
-      fastfetch \
-      python3 \
-      nodejs \
-      clang \
-      gcc \
-      gpg \
-      pass \
-      sshfs \
-      apt-transport-https \
-      asciinema \
-      lxc \
-      lxcfs \
-      lxc-templates \
-      bash \
-      genisoimage \
-      coreutils \
-      grep \
-      jq  \
-      mesa-utils  \
-      ovmf  \
-      pciutils  \
-      procps  \
-      qemu-system  \
-      sed  \
-      socat  \
-      spice-client-gtk  \
-      swtpm-tools  \
-      unzip  \
-      usbutils  \
-      util-linux  \
-      uuid-runtime  \
-      xdg-user-dirs  \
-      x11-xserver-utils  \
-      zsync \
-      ncdu \
-      lsd \
-      unzip
+	nano \
+	htop \
+	iftop \
+	rsync \
+	tree \
+	git \
+	wget \
+	curl \
+	ssh \
+	iproute2 \
+	bsdmainutils \
+	fastfetch \
+	python3 \
+	nodejs \
+	clang \
+	gcc \
+	gpg \
+	pass \
+	sshfs \
+	apt-transport-https \
+	asciinema \
+	lxc \
+	lxcfs \
+	lxc-templates \
+	bash \
+	genisoimage \
+	coreutils \
+	grep \
+	jq \
+	mesa-utils \
+	ovmf \
+	pciutils \
+	procps \
+	qemu-system \
+	sed \
+	socat \
+	spice-client-gtk \
+	swtpm-tools \
+	unzip \
+	usbutils \
+	util-linux \
+	uuid-runtime \
+	xdg-user-dirs \
+	x11-xserver-utils \
+	zsync \
+	ncdu \
+	lsd \
+	unzip
 
 sudo wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/dart.gpg
 sudo echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | tee /etc/apt/sources.list.d/dart_stable.list
@@ -70,8 +70,8 @@ sudo tar -xf $go_archive -C /usr/local
 rm $go_archive
 
 if [[ $(grep microsoft /proc/version) ]]; then
-  sudo mkdir -p /sys/fs/cgroup/systemd && sudo mount -t cgroup cgroup -o none,name=systemd /sys/fs/cgroup/systemd
-  sudo bash -c "echo 'cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate 0 0' >> /etc/fstab"
+	sudo mkdir -p /sys/fs/cgroup/systemd && sudo mount -t cgroup cgroup -o none,name=systemd /sys/fs/cgroup/systemd
+	sudo bash -c "echo 'cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate 0 0' >> /etc/fstab"
 fi
 
 sudo wget -q https://github.com/quickemu-project/quickemu/releases/download/4.9.7/quickemu_4.9.7-1_all.deb
@@ -93,8 +93,8 @@ cp "$HOME/.profile.d/host/host.sh" "$HOME/.profile"
 ln -s "$HOME/.profile" "$HOME/.bashrc"
 ln -s "$HOME/.profile" "$HOME/.bash_profile"
 
-echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "$HOME/.profile"
-echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> "$HOME/.profile"
+echo 'export PATH="$PATH:/usr/lib/dart/bin"' >>"$HOME/.profile"
+echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >>"$HOME/.profile"
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
