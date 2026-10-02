@@ -1,4 +1,4 @@
-function prompt_label() {
+_prompt_label() {
 	if [[ $(id -u) -ne 0 ]]; then
 		local time_color="\[\e[0;38;5;27m\]"
 		local user_host_color="\[\e[0;38;5;39m\]"
@@ -27,7 +27,6 @@ function prompt_label() {
 
 		PS1="$time_part $user_host_part $architecture_part $directory_part$git_color\$GIT_BRANCH\n$command_part "
 	else
-
 		local time_color="\[\e[0;38;5;27m\]"
 		local user_host_color="\[\e[0;38;5;39m\]"
 		local sign_color="\[\e[0;38;5;160m\]"
@@ -57,20 +56,33 @@ function prompt_label() {
 	fi
 }
 
-function prompt_command() {
+_git_prompt() {
 	export GIT_BRANCH=""
 	if [[ -f "/usr/bin/git" ]]; then
-		current_directory=$(pwd)
-		while [[ "$(pwd)" != '/' ]]; do
-			if [[ -d "$(pwd)/.git" ]]; then
+		local current_directory=$(pwd)
+		while [[ "$current_directory" != '/' ]]; do
+			if [[ -d "$current_directory/.git" ]]; then
 				export GIT_BRANCH=" $(git branch --show-current)"
 				break
 			fi
-			cd ..
+			current_directory="$(dirname "$current_directory")"
 		done
-		cd "$current_directory"
 	fi
 }
 
-PROMPT_COMMAND=prompt_command
-prompt_label
+_register_git_prompt() {
+	if [[ "$(declare -p PROMPT_COMMAND 2>/dev/null)" == "declare -a"* ]]; then
+		if [[ " ${PROMPT_COMMAND[*]} " != *" _git_prompt "* ]]; then
+			PROMPT_COMMAND=("_git_prompt" "${PROMPT_COMMAND[@]}")
+		fi
+		return
+	fi
+	if [[ ";${PROMPT_COMMAND:-};" != *";_git_prompt;"* ]]; then
+		local _git_prompt_value="${PROMPT_COMMAND-}"
+		printf -v PROMPT_COMMAND '%s' "_git_prompt${_git_prompt_value:+;$_git_prompt_value}"
+	fi
+}
+
+_register_git_prompt
+
+_prompt_label
